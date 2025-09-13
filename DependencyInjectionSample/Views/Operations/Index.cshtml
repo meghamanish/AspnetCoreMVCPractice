@@ -5,6 +5,7 @@
     var controllerSingleton = ViewBag.Singleton;
     var controllerInstance = ViewBag.SingletonInstance;
     var service = ViewBag.Service;
+    var requestNumber = ViewBag.RequestNumber ?? 1;
 }
 
 <style>
@@ -39,7 +40,7 @@
 
 <div>
     <span class="lifetime-title">Lifetimes</span>
-    <span class="request-label">Request One</span>
+    <span class="request-label">Request @((requestNumber is int n) ? (n == 1 ? "One" : n == 2 ? "Two" : n == 3 ? "Three" : n.ToString()) : "One")</span>
 </div>
 
 <div class="operations-section">
