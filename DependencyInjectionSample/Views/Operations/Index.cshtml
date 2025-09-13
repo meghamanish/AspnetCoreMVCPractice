@@ -1,0 +1,87 @@
+@{
+    ViewData["Title"] = "Lifetimes";
+    var controllerTransient = ViewBag.Transient;
+    var controllerScoped = ViewBag.Scoped;
+    var controllerSingleton = ViewBag.Singleton;
+    var controllerInstance = ViewBag.SingletonInstance;
+    var service = ViewBag.Service;
+}
+
+<style>
+    .lifetime-title {
+        font-size: 2.5rem;
+        font-weight: 400;
+        margin-top: 32px;
+        margin-bottom: 24px;
+    }
+    .request-label {
+        color: #f8981d;
+        font-size: 2rem;
+        float: right;
+        margin-top: 32px;
+    }
+    .operations-section {
+        margin-bottom: 32px;
+    }
+    .operations-table {
+        margin-top: 8px;
+        margin-bottom: 24px;
+    }
+    .operations-table td {
+        padding-right: 16px;
+        font-family: Consolas, monospace;
+    }
+    .operations-table .label {
+        font-weight: bold;
+        width: 120px;
+    }
+</style>
+
+<div>
+    <span class="lifetime-title">Lifetimes</span>
+    <span class="request-label">Request One</span>
+</div>
+
+<div class="operations-section">
+    <div style="margin-top: 32px; margin-bottom: 8px;"><strong>Controller Operations</strong></div>
+    <table class="operations-table">
+        <tr>
+            <td class="label">Transient</td>
+            <td>@controllerTransient?.OperationId</td>
+        </tr>
+        <tr>
+            <td class="label">Scoped</td>
+            <td>@controllerScoped?.OperationId</td>
+        </tr>
+        <tr>
+            <td class="label">Singleton</td>
+            <td>@controllerSingleton?.OperationId</td>
+        </tr>
+        <tr>
+            <td class="label">Instance</td>
+            <td>@controllerInstance?.OperationId</td>
+        </tr>
+    </table>
+</div>
+
+<div class="operations-section">
+    <div style="margin-bottom: 8px;"><strong>OperationService Operations</strong></div>
+    <table class="operations-table">
+        <tr>
+            <td class="label">Transient</td>
+            <td>@service?.TransientOperation?.OperationId</td>
+        </tr>
+        <tr>
+            <td class="label">Scoped</td>
+            <td>@service?.ScopedOperation?.OperationId</td>
+        </tr>
+        <tr>
+            <td class="label">Singleton</td>
+            <td>@service?.SingletonOperation?.OperationId</td>
+        </tr>
+        <tr>
+            <td class="label">Instance</td>
+            <td>@service?.SingletonInstanceOperation?.OperationId</td>
+        </tr>
+    </table>
+</div>
